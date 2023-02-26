@@ -1,0 +1,12 @@
+.Footer {
+  width: 100%;
+  display: flex;
+  justify-content: center;
+  padding: var(--mb-3) 0px;
+  text-align: center;
+}
+
+.footer__icon {
+  width: 30px;
+  margin: auto;
+}

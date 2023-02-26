@@ -1,0 +1,20 @@
+.header {
+  width: 100%;
+  margin: var(--mb-2-5) 0px;
+}
+
+.nav {
+  height: calc(var(--header-height) + 1.5rem);
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  column-gap: 1rem;
+}
+
+.logo {
+  width: 40px;
+}
+
+.logo img {
+  width: 100%;
+}

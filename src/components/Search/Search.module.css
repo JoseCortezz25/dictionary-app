@@ -1,0 +1,16 @@
+.Search {
+  background-color: var(--gray-color);
+  border-radius: var(--mb-1);
+  margin-top: var(--mb-1-5);
+}
+
+.Search input {
+  width: 100%;
+  background-color: transparent;
+  padding: var(--mb-1-5) var(--mb-1-5);
+  border: none;
+  outline-color: var(--amethyst-color);
+  font-weight: var(--font-semi-bold);
+  /* font-size: var(--h3-font-size); */
+  border-radius: var(--mb-1);
+}

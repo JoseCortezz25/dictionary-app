@@ -1,0 +1,65 @@
+.Meaning {
+  width: 100%;
+  margin-top: var(--mb-2-5);
+  /* border: 1px solid blue; */
+}
+
+.Meaning__header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: var(--mb-3);
+}
+
+.Meaning__header h1 {
+  font-size: var(--big-font-size);
+}
+
+.Meaning__header nav span {
+  color: var(--amethyst-color);
+  font-size: var(--h2-font-size);
+  font-weight: var(--font-semi-bold);
+}
+
+.Meaning__subtitle{
+  color: var(--text-color);
+  font-size: var(--normal-font-size);
+  font-style: italic;
+  /* width: 100%;
+  border: 1px solid red; */
+}
+
+.definition {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+
+  margin: var(--mb-1) 0px;
+}
+
+.definition p:first-child::before {
+  content: "\2022";
+  color: var(--amethyst-color);
+  font-weight: bold;
+  font-size: var(--h2-font-size);
+  margin-right: var(--mb-1);
+}
+
+.definition p:first-child {
+  width: 100%;
+  color: var(--title-color);
+}
+
+.example {
+  width: 100%;
+  display: block;
+  margin-left: var(--mb-3);
+  margin-top: var(--mb-0-5);
+  font-style: italic;
+}
+
+.example::before, .example::after {
+  content: "\"";
+}
+
