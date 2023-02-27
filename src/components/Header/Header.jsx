@@ -12,7 +12,7 @@ const Header = ({ handleSubmit, search, setSearch }) => {
           <div className={`${styles.logo}`}>
             <Image src={logoAppIcon} alt="" />
           </div>
-          <div className="nav__items">options</div>
+          {/* <div className="nav__items">options</div> */}
         </nav>
       </div>
       <Search

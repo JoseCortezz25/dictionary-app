@@ -2,8 +2,12 @@ import Head from 'next/head'
 import { Header } from '../components/Header/Header'
 import { useState } from 'react'
 import { getMeaningWord } from 'src/services/dictionary'
-import { Meaning } from '../components/Meaning/Meaning'
+import { Meanings } from '../components/Meanings/Meanings'
 import { Footer } from '../components/Footer/Footer'
+import { Advice } from 'src/components/Advice/Advice'
+
+import notFoundIcon from '@icons/images/emoji_confused_face.png'
+import openBookIcon from '@icons/images/emoji_open_book.png'
 
 export default function Home() {
   const [search, setSearch] = useState("")
@@ -36,16 +40,30 @@ export default function Home() {
       </Head>
 
       <main className='App container'>
-        <Header 
+        <Header
           setSearch={setSearch}
           search={search}
-          handleSubmit={handleSubmit} 
+          handleSubmit={handleSubmit}
         />
         {!loading ? (
           !!data ? (
-            <Meaning data={data} />
+            <Meanings data={data} />
           ) : (
-            <p>No hay datos</p>
+            search.length > 0 && !!data ? (
+              <Advice
+                image={notFoundIcon}
+                title="No Definitions Found"
+                message="Sorry pal, we couldn't find definitions for the word you were looking for.  
+                      You can try the search again at later time or head to the web instead."
+              />
+            ) :
+              (
+                <Advice
+                  image={openBookIcon}
+                  title="Dictionary App"
+                  message="Patient, but persistent. Never rushing, always playing the long-term game. Never waiting, always living with a bias toward action."
+                />
+              )
           )
         ) : (
           <p>Loading </p>

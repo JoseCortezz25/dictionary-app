@@ -1,0 +1,29 @@
+.Initial {
+  /* border: 1px solid blueviolet; */
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+}
+
+.Initial p {
+  width: 80%;
+  text-align: center;
+}
+
+.Initial__head {
+  width: 100%;
+}
+
+.Initial__head h3 {
+  text-align: center;
+  margin: var(--mb-1-5) 0px;
+}
+
+.Initial__Icon {
+  width: 50px;
+  height: 50px;
+  margin: auto;
+}
+

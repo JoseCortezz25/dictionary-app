@@ -20,7 +20,8 @@
   --body-color: #fcfafb;
   --container-color: #fff;
   --gray-color: #F4F4F4;
-  --amethyst-color: #9b59b6;
+  --amethyst-color: #A445ED;
+  --amethyst-light-color: #E9D1FB;
 
   /*========== Font and typography ==========*/
   --body-font: 'Fira Code', monospace;
@@ -206,9 +207,17 @@ img {
 }
 
 .container {
-  max-width: 968px;
+  max-width: 768px;
   margin-left: auto;
   margin-right: auto;
+  height: 100vh;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+}
+
+.hidden {
+  display: none;
 }
 
 .grid {
@@ -218,7 +227,6 @@ img {
 
 .section {
   padding: 6rem 0 2rem;
-  /* border: 1px solid rebeccapurple; */
 }
 
 .section__title {
@@ -266,7 +274,6 @@ img {
   .Main {
     width: 85%;
     margin: auto;
-    /* border: 2px dotted darkblue; */
   }
 
   .grid {

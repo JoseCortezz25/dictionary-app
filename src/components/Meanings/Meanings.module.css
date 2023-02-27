@@ -21,7 +21,7 @@
   font-weight: var(--font-semi-bold);
 }
 
-.Meaning__subtitle{
+.Meaning__subtitle {
   color: var(--text-color);
   font-size: var(--normal-font-size);
   font-style: italic;
@@ -59,7 +59,35 @@
   font-style: italic;
 }
 
-.example::before, .example::after {
-  content: "\"";
+.example::before,
+.example::after {
+  content: '"';
 }
 
+.audio__player {
+  background-color: var(--amethyst-light-color);
+  width: 80px;
+  height: 80px;
+  border-radius: 50%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+
+  transition: all var(--ts-soft);
+}
+
+.audio__player:hover {
+  background-color: var(--amethyst-color);
+}
+
+.audio__player svg {
+  width: 33px;
+  height: 33px;
+  margin-top: 4px;
+  margin-left: 6px;
+  fill: var(--amethyst-color);
+}
+
+.audio__player:hover svg {
+  fill: var(--amethyst-light-color);
+}
