@@ -11,6 +11,6 @@
   border: none;
   outline-color: var(--amethyst-color);
   font-weight: var(--font-semi-bold);
-  /* font-size: var(--h3-font-size); */
   border-radius: var(--mb-1);
+  color: var(--white-color);
 }

@@ -1,11 +1,9 @@
-import React, { useRef, useState } from "react";
+import React, { useRef } from "react";
 import Subtitle from "../Subtitle/Subtitle";
 import styles from "./Meanings.module.css";
 
 const Meanings = ({ data }) => {
   const audioPlayer = useRef(null);
-  console.log("data", data);
-  console.log("audio", data.phonetics);
 
   const handleAudioPlayer = () => {
     if (audioPlayer.current.paused || audioPlayer.current.ended) {
@@ -27,24 +25,34 @@ const Meanings = ({ data }) => {
           )}
         </nav>
         <div className={styles.Meaning__sound}>
-          <button className={styles.audio__player} onClick={handleAudioPlayer}>
-            <svg
-              fill="#000000"
-              width="800px"
-              height="800px"
-              viewBox="0 0 1920 1920"
-              xmlns="http://www.w3.org/2000/svg"
-            >
-              <path d="M175 .024V1920l1570.845-959.927z" fill-rule="evenodd" />
-            </svg>
-          </button>
-          <audio controls ref={audioPlayer} className="hidden">
-            <source
-              src={data.phonetics[data.phonetics.length - 1].audio}
-              type="audio/mp3"
-            />
-            Tu navegador no soporta la etiqueta de audio.
-          </audio>
+          {data.phonetics.length > 0 ? (
+            <>
+              <button
+                className={styles.audio__player}
+                onClick={handleAudioPlayer}
+              >
+                <svg
+                  fill="#000000"
+                  width="800px"
+                  height="800px"
+                  viewBox="0 0 1920 1920"
+                  xmlns="http://www.w3.org/2000/svg"
+                >
+                  <path
+                    d="M175 .024V1920l1570.845-959.927z"
+                    fill-rule="evenodd"
+                  />
+                </svg>
+              </button>
+              <audio controls ref={audioPlayer} className="hidden">
+                <source
+                  src={data.phonetics[data.phonetics.length - 1].audio}
+                  type="audio/mp3"
+                />
+                Tu navegador no soporta la etiqueta de audio.
+              </audio>
+            </>
+          ) : null}
         </div>
       </div>
       {data.meanings.map(({ partOfSpeech, definitions }) => (

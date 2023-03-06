@@ -60,6 +60,19 @@
   --ts-soft: 120ms ease-in-out;
 }
 
+html.dark-mode {
+  --title-color: hsl(var(--hue), var(--sat), 80%);
+  --title-color-dark: hsl(var(--hue), var(--sat), 100%);
+  --text-color: hsl(var(--hue), var(--sat), 70%);
+  --light-color-gray: hsl(var(--hue), var(--sat), 35%);
+  --body-color: #282c35;
+  --container-color: #1d2026;
+  --gray-color: #242a31;
+  --amethyst-color: #7b52ab;
+  --amethyst-light-color: #c4a7e4;
+}
+
+
 /* Responsive typography */
 @media screen and (max-width: 992px) {
   :root {
@@ -127,6 +140,11 @@ button {
 img {
   max-width: 100%;
   height: auto;
+}
+
+.dark {
+  background-color: var(--text-color);
+  color: var(--body-color);
 }
 
 .section__button {

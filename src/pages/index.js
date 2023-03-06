@@ -1,19 +1,31 @@
 import Head from 'next/head'
 import { Header } from '../components/Header/Header'
-import { useState } from 'react'
+import { useState, useEffect, useContext } from 'react'
 import { getMeaningWord } from 'src/services/dictionary'
 import { Meanings } from '../components/Meanings/Meanings'
 import { Footer } from '../components/Footer/Footer'
 import { Advice } from 'src/components/Advice/Advice'
+import { ThemeContext } from 'src/context/useTheme'
 
 import notFoundIcon from '@icons/images/emoji_confused_face.png'
 import openBookIcon from '@icons/images/emoji_open_book.png'
+import { Loader } from 'src/components/Loader/Loader'
 
 export default function Home() {
   const [search, setSearch] = useState("")
   const [data, setData] = useState(null)
   const [loading, setLoading] = useState(false)
   const [error, setError] = useState(false)
+  const { darkMode } = useContext(ThemeContext);
+
+  useEffect(() => {
+    const html = document.querySelector('html');
+    // console.log('darkMode', darkMode);
+    if (html) {
+      html.classList.toggle('dark-mode', darkMode);
+      html.classList.toggle('light-mode', !darkMode);
+    }
+  }, [darkMode]);
 
   const handleSubmit = async (e) => {
     e.preventDefault()
@@ -39,7 +51,7 @@ export default function Home() {
         <meta name="viewport" content="width=device-width, initial-scale=1.0" />
       </Head>
 
-      <main className='App container'>
+      <main className="App container">
         <Header
           setSearch={setSearch}
           search={search}
@@ -66,7 +78,7 @@ export default function Home() {
               )
           )
         ) : (
-          <p>Loading </p>
+          <Loader />
         )}
         <Footer />
       </main>

@@ -3,8 +3,13 @@ import styles from "./Header.module.css";
 import logoAppIcon from "../../../public/images/dictionary.svg";
 import Image from "next/image";
 import { Search } from "../Search/Search";
+import { useContext } from "react";
+import { ThemeContext } from "src/context/useTheme";
+import { ToggleButton } from "../ToggleButton/ToggleButton";
 
 const Header = ({ handleSubmit, search, setSearch }) => {
+  const { toggleTheme, darkMode } = useContext(ThemeContext);
+
   return (
     <header>
       <div className={styles.header}>
@@ -12,7 +17,9 @@ const Header = ({ handleSubmit, search, setSearch }) => {
           <div className={`${styles.logo}`}>
             <Image src={logoAppIcon} alt="" />
           </div>
-          {/* <div className="nav__items">options</div> */}
+          <div className="nav__items">
+            <ToggleButton click={toggleTheme} status={darkMode} />
+          </div>
         </nav>
       </div>
       <Search
