@@ -15,12 +15,11 @@ export default function Home() {
   const [search, setSearch] = useState("")
   const [data, setData] = useState(null)
   const [loading, setLoading] = useState(false)
-  const [error, setError] = useState(false)
+  const [error, setError] = useState({ status: false, message: '', resolution: '', title: '' })
   const { darkMode } = useContext(ThemeContext);
 
   useEffect(() => {
     const html = document.querySelector('html');
-    // console.log('darkMode', darkMode);
     if (html) {
       html.classList.toggle('dark-mode', darkMode);
       html.classList.toggle('light-mode', !darkMode);
@@ -29,6 +28,7 @@ export default function Home() {
 
   const handleSubmit = async (e) => {
     e.preventDefault()
+    setError({ status: false })
 
     try {
       setLoading(true)
@@ -36,7 +36,9 @@ export default function Home() {
       setLoading(false)
       setData(result.data[0])
     } catch (error) {
-
+      const { message, resolution, title } = error.response.data
+      setError({ status: true, title, message, resolution })
+      setLoading(false)
     }
   }
 
@@ -57,28 +59,37 @@ export default function Home() {
           search={search}
           handleSubmit={handleSubmit}
         />
-        {!loading ? (
-          !!data ? (
-            <Meanings data={data} />
-          ) : (
-            search.length > 0 && !!data ? (
-              <Advice
-                image={notFoundIcon}
-                title="No Definitions Found"
-                message="Sorry pal, we couldn't find definitions for the word you were looking for.  
-                      You can try the search again at later time or head to the web instead."
-              />
-            ) :
-              (
+
+        {!error.status ? (
+          !loading ? (
+            !!data ? (
+              <Meanings data={data} />
+            ) : (
+              search.length > 0 && !!data ? (
                 <Advice
-                  image={openBookIcon}
-                  title="Dictionary App"
-                  message="Patient, but persistent. Never rushing, always playing the long-term game. Never waiting, always living with a bias toward action."
+                  image={notFoundIcon}
+                  title="No Definitions Found"
+                  message="Sorry pal, we couldn't find definitions for the word you were looking for.  
+                        You can try the search again at later time or head to the web instead."
                 />
-              )
+              ) :
+                (
+                  <Advice
+                    image={openBookIcon}
+                    title="Dictionary App"
+                    message="Patient, but persistent. Never rushing, always playing the long-term game. Never waiting, always living with a bias toward action."
+                  />
+                )
+            )
+          ) : (
+            <Loader />
           )
         ) : (
-          <Loader />
+          <Advice
+            image={notFoundIcon}
+            title={error.title}
+            message={`${error.message} ${error.resolution}`}
+          />
         )}
         <Footer />
       </main>
